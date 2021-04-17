@@ -115,6 +115,8 @@ class App extends Component {
       completed: 0,
       searchKeyword: ''
     });
+
+
     this.callApi()
       .then(res => this.setState({customers: res}))
       .catch(err => console.log(err));
@@ -140,21 +142,21 @@ class App extends Component {
 
   handleValueChange = (e) => {
     let nextState = {};
-    nextState[e.target.name] = e.target.value;
+    nextState[e.target.p_name] = e.target.value;
     this.setState(nextState);
   }
 
   render() {
     const filteredComponents = (data) => {
       data = data.filter((c) => {
-        return c.name.indexOf(this.state.searchKeyword) > -1;
+        return c.p_name.indexOf(this.state.searchKeyword) > -1;
       });
       return data.map((c) => {
-        return <Customer stateRefresh={this.stateRefresh} key={c.id} id={c.id} image={c.image} name={c.name} birthday={c.birthday} gender={c.gender} job={c.job}/>
+        return <Customer stateRefresh={this.stateRefresh} key={c.barcode} barcode={c.barcode} p_name={c.p_name} p_class={c.p_class} image={c.image}  number={c.number} loc={c.loc} e_date={c.e_date}/>
       });
     }
     const { classes } = this.props;
-    const cellList = ["번호", "프로필 이미지", "이름", "생년월일", "성별", "직업", "설정"]
+    const cellList = ["바코드", "상품명", "상품 구분", "상품 이미지", "수량", "위치", "유통기한", "설정"]
     return(
       <div className={classes.root}>
         <AppBar position="static">
@@ -168,14 +170,14 @@ class App extends Component {
               <MenuIcon />
             </IconButton>
             <Typography className={classes.title} variant="h6" noWrap>
-              고객 관리 시스템
+              상품 리스트
             </Typography>
             <div className={classes.search}>
               <div className={classes.searchIcon}>
                 <SearchIcon />
               </div>
               <InputBase
-                placeholder="검색하기"
+                placeholder="상품 검색하기"
                 classes={{
                   root: classes.inputRoot,
                   input: classes.inputInput,

@@ -27,8 +27,8 @@ class CustomerDelete extends React.Component {
         })
     }
 
-    deleteCustomer(id) {
-        const url = '/api/customers/' + id;
+    deleteCustomer(barcode) {
+        const url = '/api/customers/' + barcode;
         fetch(url, {
             method: 'DELETE'
         });
@@ -49,7 +49,7 @@ class CustomerDelete extends React.Component {
                     </Typography>
                 </DialogContent>
                 <DialogActions>
-                    <Button variant="contained" color="primary" onClick={(e) => {this.deleteCustomer(this.props.id)}}>삭제</Button>
+                    <Button variant="contained" color="primary" onClick={(e) => {this.deleteCustomer(this.props.barcode)}}>삭제</Button>
                     <Button variant="outlined" color="primary" onClick={this.handleClose}>닫기</Button>
                 </DialogActions>
             </Dialog>

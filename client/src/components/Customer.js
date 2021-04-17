@@ -7,17 +7,18 @@ class Customer extends React.Component {
     render(){
         return(
            <TableRow>
-               <TableCell>{this.props.id}</TableCell>
+               <TableCell>{this.props.barcode}</TableCell>
+               <TableCell>{this.props.p_name}</TableCell>
+               <TableCell>{this.props.p_class}</TableCell>
                <TableCell><img src={this.props.image} alt="profile" style={{width:64, height:64}}/></TableCell>
-               <TableCell>{this.props.name}</TableCell>
-               <TableCell>{this.props.birthday}</TableCell>
-               <TableCell>{this.props.gender}</TableCell>
-               <TableCell>{this.props.job}</TableCell>
-               <TableCell><CustomerDelete stateRefresh={this.props.stateRefresh} id={this.props.id}/></TableCell>
+               <TableCell>{this.props.number}</TableCell>
+               <TableCell>{this.props.loc}</TableCell>
+               <TableCell>{this.props.e_date}</TableCell>
+               <TableCell><CustomerDelete stateRefresh={this.props.stateRefresh} barcode={this.props.barcode}/></TableCell>
            </TableRow>
         )    
     }
 }
-
+//<TableCell><img src={this.props.image} alt="profile" style={{width:64, height:64}}/></TableCell>
 
 export default Customer;

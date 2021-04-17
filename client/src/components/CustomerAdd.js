@@ -20,10 +20,11 @@ class CustomerAdd extends React.Component {
         super(props);
         this.state = {
             file: null,
-            userName: '',
-            birthday: '',
-            gender: '',
-            job: '',
+            barcode: '',
+            p_name: '',
+            number: '',
+            loc: '',
+            e_date:'',
             fileName: '',
             open: false
         }
@@ -38,10 +39,11 @@ class CustomerAdd extends React.Component {
             })
         this.setState({
             file: null,
-            userName: '',
-            birthday: '',
-            gender: '',
-            job: '',
+            barcode: '',
+            p_name: '',
+            number: '',
+            loc: '',
+            e_date:'',
             fileName: '',
             open: false
         })
@@ -57,18 +59,21 @@ class CustomerAdd extends React.Component {
 
     handleValueChange = (e) => {
         let nextState = {};
-        nextState[e.target.name] = e.target.value;
+        nextState[e.target.p_name] = e.target.value;
         this.setState(nextState);
     }
     
     addCustomer = () => {
         const url = '/api/customers';
         const formData = new FormData();
-        formData.append('image', this.state.file);
-        formData.append('name', this.state.userName);
-        formData.append('birthday', this.state.birthday);
-        formData.append('gender', this.state.gender);
-        formData.append('job', this.state.job);
+        
+        formData.append('barcode', this.state.barcode);
+        formData.append('p_name', this.state.p_name);
+        formData.append('p_class', this.state.p_class);
+        formData.append('image', this.state.image);
+        formData.append('number', this.state.number);
+        formData.append('loc', this.state.loc);
+        formData.append('e_date', this.state.e_date);
         const config = {
             headers: {
                 'content-type':'multipart/form-data'
@@ -86,10 +91,11 @@ class CustomerAdd extends React.Component {
     handleClose = () => {
         this.setState({
             file: null,
-            userName: '',
-            birthday: '',
-            gender: '',
-            job: '',
+            barcode: '',
+            p_name: '',
+            number: '',
+            loc: '',
+            e_date:'',
             fileName: '',
             open: false
         })
@@ -100,10 +106,10 @@ class CustomerAdd extends React.Component {
         return(
             <div>
                 <Button variant="contained" color="primary" onClick={this.handleClickOpen}>
-                    고객 추가하기
+                    상품 리스트 추가하기
                 </Button>
                 <Dialog open={this.state.open} onClose={this.handleClose}>
-                    <DialogTitle>고객 추가</DialogTitle>
+                    <DialogTitle>상품 리스트 추가</DialogTitle>
                     <DialogContent>
                     <input className={classes.hidden} accept="image/*" id="raised-button-file" type="file" file={this.state.fileName} value={this.state.fileName} onChange={this.handleFileChange}/><br/>
                     <label htmlFor="raised-button-file">
@@ -112,10 +118,10 @@ class CustomerAdd extends React.Component {
                         </Button>
                     </label>
                     <br/>
-                    <TextField label="이름" type="text" name="userName" value={this.state.userName} onChange={this.handleValueChange}/><br/>
-                    <TextField label="생년월일" type="text" name="birthday" value={this.state.birthday} onChange={this.handleValueChange}/><br/>
-                    <TextField label="성별" type="text" name="gender" value={this.state.gender} onChange={this.handleValueChange}/><br/>
-                    <TextField label="직업" type="text" name="job" value={this.state.job} onChange={this.handleValueChange}/><br/> 
+                    <TextField label="바코드" type="text" name="barcode" value={this.state.barcode} onChange={this.handleValueChange}/><br/>
+                    <TextField label="상품명" type="text" name="p_name" value={this.state.p_name} onChange={this.handleValueChange}/><br/>
+                    <TextField label="수량" type="text" name="number" value={this.state.number} onChange={this.handleValueChange}/><br/>
+                    <TextField label="유통기한" type="text" name="e_date" value={this.state.e_date} onChange={this.handleValueChange}/><br/> 
                     </DialogContent>
                     <DialogActions>
                         <Button variant="contained" color="primary" onClick={this.handleFormSubmit}>추가</Button>
