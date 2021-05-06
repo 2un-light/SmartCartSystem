@@ -14,7 +14,7 @@ const styles = theme => ({
     }
 });
 
-class CustomerAdd extends React.Component {
+class MainAdd extends React.Component {
 
     constructor(props) {
         super(props);
@@ -26,13 +26,14 @@ class CustomerAdd extends React.Component {
             loc: '',
             e_date:'',
             fileName: '',
+            price: '',
             open: false
         }
     }
 
     handleFormSubmit = (e) => {
         e.preventDefault()
-        this.addCustomer()
+        this.addMain()
             .then((response) => {
                 console.log(response.data);
                 this.props.stateRefresh();
@@ -45,6 +46,7 @@ class CustomerAdd extends React.Component {
             loc: '',
             e_date:'',
             fileName: '',
+            price: '',
             open: false
         })
         
@@ -63,7 +65,7 @@ class CustomerAdd extends React.Component {
         this.setState(nextState);
     }
     
-    addCustomer = () => {
+    addMain = () => {
         const url = '/api/customers';
         const formData = new FormData();
         
@@ -74,6 +76,7 @@ class CustomerAdd extends React.Component {
         formData.append('number', this.state.number);
         formData.append('loc', this.state.loc);
         formData.append('e_date', this.state.e_date);
+        formData.append('price', this.state.price);
         const config = {
             headers: {
                 'content-type':'multipart/form-data'
@@ -97,6 +100,7 @@ class CustomerAdd extends React.Component {
             loc: '',
             e_date:'',
             fileName: '',
+            price: '',
             open: false
         })
     }
@@ -104,33 +108,11 @@ class CustomerAdd extends React.Component {
     render() {
         const { classes } = this.props;
         return(
-            <div>
-                <Button variant="contained" color="primary" onClick={this.handleClickOpen}>
-                    상품 리스트 추가하기
-                </Button>
-                <Dialog open={this.state.open} onClose={this.handleClose}>
-                    <DialogTitle>상품 리스트 추가</DialogTitle>
-                    <DialogContent>
-                    <input className={classes.hidden} accept="image/*" id="raised-button-file" type="file" file={this.state.fileName} value={this.state.fileName} onChange={this.handleFileChange}/><br/>
-                    <label htmlFor="raised-button-file">
-                        <Button variant="contained" color="primary" component="span" name="file">
-                            {this.state.fileName === ""? "프로필 이미지 선택": this.state.fileName}
-                        </Button>
-                    </label>
-                    <br/>
-                    <TextField label="바코드" type="text" name="barcode" value={this.state.barcode} onChange={this.handleValueChange}/><br/>
-                    <TextField label="상품명" type="text" name="p_name" value={this.state.p_name} onChange={this.handleValueChange}/><br/>
-                    <TextField label="수량" type="text" name="number" value={this.state.number} onChange={this.handleValueChange}/><br/>
-                    <TextField label="유통기한" type="text" name="e_date" value={this.state.e_date} onChange={this.handleValueChange}/><br/> 
-                    </DialogContent>
-                    <DialogActions>
-                        <Button variant="contained" color="primary" onClick={this.handleFormSubmit}>추가</Button>
-                        <Button variant="outlined" color="primary" onClick={this.handleClose}>닫기</Button>
-                    </DialogActions>
-                </Dialog>
+            <div  onClick = {() => {console.log("추천알고리즘")}}>
+               <h3> 추천 알고리즘 </h3>
             </div>
         )
     }
 }
 
-export default withStyles(styles)(CustomerAdd);
+export default withStyles(styles)(MainAdd);

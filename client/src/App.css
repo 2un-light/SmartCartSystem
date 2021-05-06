@@ -1,3 +1,7 @@
 .gray-background{
   background: darkgray;
 }
+
+a { text-decoration:none !important } 
+a:hover { text-decoration:none !important }
+

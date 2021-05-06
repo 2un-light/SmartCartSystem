@@ -6,7 +6,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
-class CustomerDelete extends React.Component {
+class MainDelete extends React.Component {
     
     constructor(props) {
         super(props);
@@ -27,7 +27,7 @@ class CustomerDelete extends React.Component {
         })
     }
 
-    deleteCustomer(barcode) {
+    deleteMain(barcode) {
         const url = '/api/customers/' + barcode;
         fetch(url, {
             method: 'DELETE'
@@ -49,7 +49,7 @@ class CustomerDelete extends React.Component {
                     </Typography>
                 </DialogContent>
                 <DialogActions>
-                    <Button variant="contained" color="primary" onClick={(e) => {this.deleteCustomer(this.props.barcode)}}>삭제</Button>
+                    <Button variant="contained" color="primary" onClick={(e) => {this.deleteMain(this.props.barcode)}}>삭제</Button>
                     <Button variant="outlined" color="primary" onClick={this.handleClose}>닫기</Button>
                 </DialogActions>
             </Dialog>
@@ -59,4 +59,4 @@ class CustomerDelete extends React.Component {
 
 }
 
-export default CustomerDelete;
+export default MainDelete;
