@@ -7,30 +7,14 @@ import DialogContent from '@material-ui/core/DialogContent';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
-import {Link}from 'react-router-dom';
-
-
 
 const styles = theme => ({
     hidden: {
         display: 'none'
-        }
-    });
-
-    const algo = {
-        width : '150px',
-        margin : 'auto',
-        padding :'15px 20px',
-        fontSize : '20px',
-        float : 'center',
-        textAlign : 'center',
-        fontWeight: 'bold',
-        color: ' #333333'
-        
     }
+});
 
-
-class MainAdd extends React.Component {
+class ListAdd extends React.Component {
 
     constructor(props) {
         super(props);
@@ -42,14 +26,13 @@ class MainAdd extends React.Component {
             loc: '',
             e_date:'',
             fileName: '',
-            price: '',
             open: false
         }
     }
 
     handleFormSubmit = (e) => {
         e.preventDefault()
-        this.addMain()
+        this.addList()
             .then((response) => {
                 console.log(response.data);
                 this.props.stateRefresh();
@@ -62,7 +45,6 @@ class MainAdd extends React.Component {
             loc: '',
             e_date:'',
             fileName: '',
-            price: '',
             open: false
         })
         
@@ -81,7 +63,7 @@ class MainAdd extends React.Component {
         this.setState(nextState);
     }
     
-    addMain = () => {
+    addList = () => {
         const url = '/api/customers';
         const formData = new FormData();
         
@@ -92,7 +74,6 @@ class MainAdd extends React.Component {
         formData.append('number', this.state.number);
         formData.append('loc', this.state.loc);
         formData.append('e_date', this.state.e_date);
-        formData.append('price', this.state.price);
         const config = {
             headers: {
                 'content-type':'multipart/form-data'
@@ -116,22 +97,38 @@ class MainAdd extends React.Component {
             loc: '',
             e_date:'',
             fileName: '',
-            price: '',
             open: false
         })
     }
-    
 
     render() {
         const { classes } = this.props;
         return(
-            < Link to ="/algorithm" > 
-            <div  onClick = {() => {console.log("추천알고리즘 클릭")}}>
-                <div style={algo} >추천 알고리즘 </div>
+            <div>
+                <Button variant="contained" color="primary" onClick={this.handleClickOpen}>
+                    상품 리스트 추가하기
+                </Button>
+                <Dialog open={this.state.open} onClose={this.handleClose}>
+                    <DialogTitle>상품 리스트 추가</DialogTitle>
+                    <DialogContent>
+                    <input className={classes.hidden} accept="image/*" id="raised-button-file" type="file" file={this.state.fileName} value={this.state.fileName} onChange={this.handleFileChange}/><br/>
+                    <label htmlFor="raised-button-file">
+                        <Button variant="contained" color="primary" component="span" name="file">
+                            {this.state.fileName === ""? "프로필 이미지 선택": this.state.fileName}
+                        </Button>
+                    </label>
+                    <br/>
+                    
+                    <TextField label="상품명" type="text" name="p_name" value={this.state.p_name} onChange={this.handleValueChange}/><br/>
+                    </DialogContent>
+                    <DialogActions>
+                        <Button variant="contained" color="primary" onClick={this.handleFormSubmit}>추가</Button>
+                        <Button variant="outlined" color="primary" onClick={this.handleClose}>닫기</Button>
+                    </DialogActions>
+                </Dialog>
             </div>
-            </Link>
         )
     }
 }
 
-export default withStyles(styles)(MainAdd);
+export default withStyles(styles)(ListAdd);

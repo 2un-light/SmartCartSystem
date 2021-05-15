@@ -24,8 +24,17 @@ const multer = require('multer');
 const upload = multer({dest: './upload'})
 
 app.get('/api/customers', (req, res) => {
+  connection.query(
+    "SELECT * FROM product",
+    (err, rows, fields) => {
+      res.send(rows);
+    }
+  );
+});
+
+app.get('/api/customers/basket', (req, res) => {
     connection.query(
-      "SELECT * FROM product ", 
+      "SELECT * FROM product WHERE isDeleted = 0 ",
       (err, rows, fields) => {
         res.send(rows);
       }
@@ -34,19 +43,15 @@ app.get('/api/customers', (req, res) => {
 
 
 
-
 app.use('/image', express.static('./upload'));
 
 app.post('/api/customers', upload.single('image'),(req,res)=>{
-  let sql = 'INSERT INTO product VALUES (null, ?, ?, ?, ?, ?)';
-  let image = 'http://localhost:5000/image/' + req.file.filename;
+  let sql = 'INSERT INTO product VALUES (null, ?, null, ?, null, null, null, null, null, ?, 0)';
   let p_name = req.body.p_name;
-  let barcode = req.body.barcode;
-  
-  
+  let image = 'http://localhost:5000/image/' + req.file.filename;
+  let price = req.body.price;
 
-
-  let params = [barcode, image, p_name];
+  let params = [image, p_name, price];
 
   connection.query(sql, params,
     (err, rows, fields) => {
@@ -56,14 +61,15 @@ app.post('/api/customers', upload.single('image'),(req,res)=>{
 
 });
 
-/* app.delete('/api/customers/:barcode', (req, res)=> {
- let sql = 'UPDATE product SET isDeleted = 1 WHERE id = ?';
-  let params = [req.params.barcode];
+app.delete('/api/customers/:id', (req, res)=> {
+  let sql = 'UPDATE product SET isDeleted = 1 WHERE barcode = ?';
+  let params = [req.params.id];
   connection.query(sql, params,
       (err, rows, fields) => {
         res.send(rows);
       }
     )
 })
-*/
+
+
 app.listen(port, () => console.log(`Listening on port ${port}`));
