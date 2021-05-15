@@ -4,13 +4,14 @@ import TableCell from '@material-ui/core/TableCell';
 import MainDelete from './MainDelete';
 import { ImageAspectRatioSharp } from '@material-ui/icons';
 //import Productimg from './components/Productimg';
+import {Link}from 'react-router-dom';
 
 const box = {
     width : '70px',
     height : '110px',
     float : 'left',
     
-    margin : '5px 5px'
+    margin : '10px'
     
 }
 
@@ -58,7 +59,8 @@ class Main extends React.Component {
     render(){
         
         return(
-            <div style={box}>
+            
+            <div style={box} >
                 
                 <div style={img}>
                 <img src={this.props.image}  alt="profile" style={{width:64, height:64}} onClick = {()=> {console.log(this.props.image)}}/></div>
@@ -68,6 +70,7 @@ class Main extends React.Component {
                     <div style={price}>{this.props.price}원 </div>
                 </div>
                 </div>
+                
                 
             )
             //console.log(this.props.image);
