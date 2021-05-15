@@ -85,11 +85,7 @@ export default function Detail(props){
           <Typography variant="h6" className={classes.title} onClick={()=>{
             console.log(props.name);
           }}>
-<<<<<<< HEAD
-            {props.name} 
-=======
             {props.name}
->>>>>>> add16f09c1020a84606d56eb6567fe231f3cf283
           </Typography>
           
         </Toolbar>
@@ -109,11 +105,7 @@ export default function Detail(props){
         </Grid>
           
         <Grid item xs={6}>
-<<<<<<< HEAD
-          <Paper className={classes.paper}>수량 : 12개</Paper>
-=======
           <Paper className={classes.paper}>수량 : {props.number}</Paper>
->>>>>>> add16f09c1020a84606d56eb6567fe231f3cf283
         </Grid>
         <Grid item xs={6}>
           <Paper className={classes.paper}>0</Paper>
@@ -129,4 +121,3 @@ export default function Detail(props){
     </div>
     )
 }
-//export default Detail;

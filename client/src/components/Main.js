@@ -10,10 +10,6 @@ const box = {
     width : '70px',
     height : '110px',
     float : 'left',
-<<<<<<< HEAD
-=======
-    
->>>>>>> add16f09c1020a84606d56eb6567fe231f3cf283
     margin : '10px'
     
 }
