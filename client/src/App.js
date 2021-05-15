@@ -384,4 +384,8 @@ class App extends Component {
 }
 
 
+<<<<<<< HEAD
 export default withStyles(styles)(App);
+=======
+export default withStyles(styles)(App);
+>>>>>>> add16f09c1020a84606d56eb6567fe231f3cf283

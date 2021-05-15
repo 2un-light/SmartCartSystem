@@ -61,7 +61,10 @@ const x = {
 
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> add16f09c1020a84606d56eb6567fe231f3cf283
 class List extends React.Component {
     render(){
         return(
