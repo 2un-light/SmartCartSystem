@@ -34,12 +34,23 @@ app.get('/api/customers', (req, res) => {
 
 app.get('/api/customers/basket', (req, res) => {
     connection.query(
-      "SELECT * FROM product WHERE isDeleted = 0 ",
+      "SELECT * FROM product WHERE isDeleted = 0",
       (err, rows, fields) => {
         res.send(rows);
       }
     );
 });
+
+app.get('/api/customers/list', (req, res) => {
+  connection.query(
+    "SELECT * FROM product WHERE isAdded = 1 and isDeleted = 0",
+    (err, rows, fields) => {
+      res.send(rows);
+    }
+  );
+});
+
+
 
 
 
@@ -62,14 +73,27 @@ app.post('/api/customers', upload.single('image'),(req,res)=>{
 });
 
 app.delete('/api/customers/:id', (req, res)=> {
-  let sql = 'UPDATE product SET isDeleted = 1 WHERE barcode = ?';
+  let sql = 'UPDATE product SET isDeleted = 1, isAdded = 0 WHERE barcode = ?';
   let params = [req.params.id];
   connection.query(sql, params,
       (err, rows, fields) => {
         res.send(rows);
       }
     )
-})
+});
+
+
+
+app.post('/api/customers/:id', (req, res)=> {
+  let sql = 'UPDATE product SET isAdded = 1, isDeleted = 0 WHERE barcode = ?';
+  let params = [req.params.id];
+  connection.query(sql, params,
+      (err, rows, fields) => {
+        res.send(rows);
+      }
+    )
+});
+
 
 
 app.listen(port, () => console.log(`Listening on port ${port}`));

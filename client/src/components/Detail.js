@@ -1,4 +1,5 @@
 import React from 'react';
+import ListAdd from './ListAdd';
 import Main from './Main'
 import {
   BrowserRouter as Router,
@@ -23,6 +24,7 @@ import ButtonBase from '@material-ui/core/ButtonBase';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 import { BottomNavigation } from '@material-ui/core';
+import ArrowBackIosRoundedIcon from '@material-ui/icons/ArrowBackIosRounded';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -79,8 +81,10 @@ export default function Detail(props){
 
       <AppBar position="static" >
         <Toolbar >
+          
+          
           <IconButton edge="start" className={classes.menuButton}  color="inherit" aria-label="menu">
-           <Link to="/"> <MenuIcon /></Link>
+           <Link to="/"> <ArrowBackIosRoundedIcon /></Link>
           </IconButton>
           <Typography variant="h6" className={classes.title} onClick={()=>{
             console.log(props.name);
@@ -105,7 +109,7 @@ export default function Detail(props){
         </Grid>
           
         <Grid item xs={6}>
-          <Paper className={classes.paper}>수량 : {props.number}</Paper>
+          <Paper className={classes.paper}>{props.price}원</Paper>
         </Grid>
         <Grid item xs={6}>
           <Paper className={classes.paper}>0</Paper>
@@ -115,8 +119,9 @@ export default function Detail(props){
         </Grid>
         
       </Grid>
-      <Fab color="primary" aria-label="add" className={classes.add}>
-        <AddIcon />
+     
+      <Fab color="primary" aria-label="add" className={classes.add} onClick = {() => props.id}>
+      <ListAdd stateRefresh={props.stateRefresh} id={props.id}/>
       </Fab>
     </div>
     )

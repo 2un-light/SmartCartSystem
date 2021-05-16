@@ -20,7 +20,6 @@ import {
   Link
 } from 'react-router-dom';
 
-
 const styles = theme => ({
   root : {
     width : '100%'
@@ -188,10 +187,11 @@ class ListApp extends Component {
   }
 
   callApi = async () => {
-    const response = await fetch('/api/customers/basket');
+    const response = await fetch('/api/customers/list');
     const body = await response.json();
     return body;
   }
+
 
   progress = () => {
     const { completed } = this.state;

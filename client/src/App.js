@@ -147,7 +147,9 @@ class App extends Component {
       completed:0,
       searchKeyword: '',
       name:'',
-      img:''
+      img:'',
+      price:'',
+      id : ''
     }
   }
 
@@ -158,12 +160,9 @@ class App extends Component {
       searchKeyword: ''
     });
 
-
     this.callApi()
       .then(res => this.setState({customers: res}))
       .catch(err => console.log(err));
- 
-
    
   }
 
@@ -206,7 +205,7 @@ class App extends Component {
       });
       return data.map((c) => {
         return  < Link to={`/detail/${c.p_name}`} onClick={()=>{
-          this.state.name = c.p_name;this.state.img=c.image;
+          this.state.name = c.p_name; this.state.img=c.image; this.state.price=c.price; this.state.id = c.barcode;
         }}><Main stateRefresh={this.stateRefresh} key={c.p_name} p_name={c.p_name}  image={c.image} price={c.price}/></Link>
       });
     }
@@ -240,7 +239,6 @@ class App extends Component {
     width : '375px',
     height: '20px',
     float : 'center',
-    //margin : '10px',
     
     
   }
@@ -369,7 +367,7 @@ class App extends Component {
 
         <Route exact path={`/detail/${this.state.name}`} 
         render={props=><Route.Component {...props} name={this.state.name}/>}>
-          <Detail name={this.state.name} img={this.state.img}/>
+          <Detail name={this.state.name} img={this.state.img} price={this.state.price} stateRefresh={this.stateRefresh} id={this.state.id}/>
         </Route>
 
         <Route exact path="/ListApp">
