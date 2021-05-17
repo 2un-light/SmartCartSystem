@@ -1,0 +1,68 @@
+.header {
+    background: #cfd6b5;
+    color: white;
+    padding: 0 35px;
+    font-size: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 65px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+}
+
+.loginWrapper {
+    width: 220px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.inputBox {
+    display: flex;
+    height: 45px;
+    width: 220px;
+    border: 1px solid rgb(210, 210, 210);
+    margin-top: 10px;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.inputBox div {
+    height: 100%;
+    width: 43px;
+    margin-right: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgb(230, 230, 230);
+}
+
+.inputBox div img {
+    width: 65%;
+    height: 65%;
+}
+
+.inputBox input {
+    border: none;
+    outline: none;
+}
+
+.button {
+    height: 45px;
+    width: 100%;
+    margin-top: 20px;
+    font-size: 20px;
+    color: white;
+    font-weight: 700;
+    background: #656f66;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+}

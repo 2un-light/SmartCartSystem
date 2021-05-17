@@ -3,7 +3,6 @@ import List from './components/List';
 import './App.css';
 import Navi from './components/Navi';
 import App from './App';
-
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableRow from '@material-ui/core/TableRow';
