@@ -64,10 +64,10 @@ function Navi() {
         
       <Link to="/"><ArrowBackIosRoundedIcon className={classes.icons} style={{marginTop: 440, marginLeft:30}}/></Link>
       <Link to="/Location"><LocationOnRoundedIcon className={classes.icons} style={{marginTop: 520, marginLeft:30}} /></Link>
-      <Link to="/smartcart"><ReplayRoundedIcon style={{marginLeft:30, marginTop:600}} className={classes.icons}/></Link>
+      <Link to="/Navi"><ReplayRoundedIcon style={{marginLeft:30, marginTop:600}} className={classes.icons}/></Link>
 
         <Link to="/"><MapRoundedIcon style={{marginLeft:320, marginTop:70}} className={classes.icons}/></Link> 
-        <Link to="/ListApp"><ListRoundedIcon style={{marginLeft:320, marginTop:150}} className={classes.icons}></ListRoundedIcon></Link>
+        <Link to="/ListAppN"><ListRoundedIcon style={{marginLeft:320, marginTop:150}} className={classes.icons}></ListRoundedIcon></Link>
         <Link to="/Basket"><AddShoppingCartRoundedIcon style={{marginLeft:320, marginTop:230}} className={classes.icons}></AddShoppingCartRoundedIcon></Link>
 
       </Container>

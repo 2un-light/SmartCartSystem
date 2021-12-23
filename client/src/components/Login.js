@@ -66,9 +66,9 @@ const Login = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <button className="button" onClick={onHandleLogin}>
+        <Link to = "/"><button className="button">
           LOGIN
-        </button>
+        </button></Link>
         <span
           style={{
             whiteSpace: "nowrap",

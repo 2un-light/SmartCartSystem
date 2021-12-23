@@ -1,6 +1,12 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./Register.css";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+}from 'react-router-dom';
 
 const Register = () => {
   const [id, setId] = useState("");
@@ -213,6 +219,7 @@ const Register = () => {
           />
           <span>마케팅 정보 수신 동의 (선택)</span>
         </div>
+        <Link to="/login">
         <button
           className="buttonR"
           style={{ width: "100%", marginLeft: "0" }}
@@ -220,6 +227,7 @@ const Register = () => {
         >
           회원가입
         </button>
+        </Link>
       </form>
     </>
   );

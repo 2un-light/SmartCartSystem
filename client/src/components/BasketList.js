@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import ListDelete from './ListDelete';
 import Counter from '../counter';
-import BarcodeProc from './BarcodeProc'
 
 const box = {
     width : '100%',
@@ -62,7 +61,7 @@ const x = {
 
 
 
-class List extends React.Component {
+class BasketList extends React.Component {
     barcodeInput(){
         var code = prompt("바코드 무엇인가요?"+"");
         alert("장바구니에 해당 상품이 담겼습니다.");
@@ -75,10 +74,9 @@ class List extends React.Component {
                <div style={minbox}>
                <div style={name}>{this.props.p_name}</div>
                <div style={price}>{this.props.price} 원 </div>
-               {/* <div style={numberbar}>
+               <div style={numberbar}>
                 <Counter/>
-               </div> */}
-               <BarcodeProc stateRefresh={this.props.stateRefresh} id={this.props.id}/>
+               </div>
                </div>
                <div style={x}><ListDelete stateRefresh={this.props.stateRefresh} id={this.props.id}/></div>
                
@@ -88,4 +86,4 @@ class List extends React.Component {
 }
 
 
-export default List;
+export default BasketList;

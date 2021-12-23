@@ -1,8 +1,8 @@
 import { Component } from 'react';
-import BasketList from './components/BasketList';
-import './App.css';
-import Navi from './components/Navi';
+import List from './components/List';
 import App from './App';
+import Basket from './Basket';
+import Navi from './components/Navi';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableRow from '@material-ui/core/TableRow';
@@ -15,12 +15,15 @@ import InputBase from '@material-ui/core/InputBase';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 import SearchIcon from '@material-ui/icons/Search';
 import Button from '@material-ui/core/Button';
-import ArrowBackIosRoundedIcon from '@material-ui/icons/ArrowBackIosRounded';
 import {
   BrowserRouter as Router,
   Route,
   Link
 } from 'react-router-dom';
+import ArrowBackIosRoundedIcon from '@material-ui/icons/ArrowBackIosRounded';
+import AddShoppingCartRoundedIcon from '@material-ui/icons/AddShoppingCartRounded';
+
+
 
 const styles = theme => ({
   root : {
@@ -104,87 +107,80 @@ const styles = theme => ({
 
   },
 
+  bar : {
+    width : '100%',
+    height : '60px',
+
+  },
+
   userbox : {
     width : '100%',
-    height : '30px',
-    backgroundColor : 'red'
+    height : '90px',
+  },
+
+  userimg : {
+    width : '65px',
+    height : '65px',
+    margin : '20px 10px 10px',
+    float : 'left',
+    borderRadius : '50%',
+    color : '#666666',
+    backgroundImage : 'url(https://i.postimg.cc/7h000xvw/user.png)',
+    backgroundRepeat: 'no-repeat'
+  },
+
+  userinfo : {
+    width : '150px',
+    height : '70px',
+    margin : '20px 10px 10px',
+    float : 'left'
+  },
+  
+  username : {
+    width : '100%',
+    height : '20px',
+    float : 'left',
+    margin : '5px 0px',
+    color : '#666666',
+    fontWeight : 'bold'
+  },
+
+  userid : {
+    width : '100%',
+    height : '20px',
+    float : 'left',
+    margin : 0,
+    color : '#666666'
   },
 
   more : {
     width : '100%',
     height : '100%',
     margin : '5px 0px',
-    fontWeight : 'bold',
-    border : '1px solid',
-    color : '#666666',
-    opacity : '70%'
+    fontWeight : 'bold'
   },
-
-  more2 : {
-    width : '100%',
-    height : '50px',
-    margin : '5px 0px',
-    fontWeight : 'bold',
-    fontSize : '20px'
-  },
-
   width : {
     width : '70%'
   },
-  navigation : {
-    height : '70px'
-},
-back : {
+  back : {
     width : '30px',
     height : '30px',
     float : 'left',
-    margin : '20px'
+    margin : '15px',
+    color:"#000"
 },
-jangbaguni : {
-    width : '200px',
-    height : '30px',
-    float : 'left',
-    margin : '20px 10px 20px 40px',
-    color : '#666666',
-    textAlign : 'center',
-    textWeight : 'bold',
-    fontSize : '20px'
-},
-line : {
-    height : '3px',
-    backgroundColor : "#888888",
-    opacity : '30%'
-},
-cashbox : {
-    width : '100%',
-    height : '100px'
-},
-cashminbox : {
-    width : '390px',
-    height : '30px',
-    float : 'left',
-    margin : 10,
-},
-cashfont : {
-    width: '150px',
-    height : '30px',
-    float : 'left',
-    color : '#888888',
-    fontSize : '20px',
-    fontWeight : 'bold'
-},
-cashnumber : {
-    width: '150px',
-    height : '30px',
-    float : 'right',
-    color : '#888888',
-    fontSize : '20px'
+shopping : {
+  width : '30px',
+  height : '30px',
+  float : 'right',
+  margin : '15px',
+  color:"#000"
 }
 
 
 });
 
-class Basket extends Component {
+class ListAppN extends Component {
 
   constructor(props){
     super(props);
@@ -216,7 +212,7 @@ class Basket extends Component {
   }
 
   callApi = async () => {
-    const response = await fetch('/api/customers/basket');
+    const response = await fetch('/api/customers/list');
     const body = await response.json();
     return body;
   }
@@ -233,33 +229,43 @@ class Basket extends Component {
     this.setState(nextState);
   }
 
-
   render() {
     const filteredComponents = (data) => {
       data = data.filter((c) => {
         return c.p_name.indexOf(this.state.searchKeyword) > -1;
       });
       return data.map((c) => {
-        return <BasketList stateRefresh={this.stateRefresh} key={c.barcode} id={c.barcode} image={c.image} p_name={c.p_name} price={c.price} count={c.count}/>
+        return <List stateRefresh={this.stateRefresh} key={c.barcode} id={c.barcode} image={c.image} p_name={c.p_name} price={c.price} count={c.count}/>
       });
+
+     
+
      
     }
 
     const { classes } = this.props;
     const cellList = [" + 더 담으러 가기"]
-    const cellList2 = ["결제하기"]
     return(
-      <Router>
       <div className={classes.root}>
-      <Route exact path="/basket">
-        {/* 사용자 프로필 부분 */}
-        <div className={classes.navigation}> 
-               <Link to="/Navi"><ArrowBackIosRoundedIcon className={classes.back}/></Link>
-               <div className={classes.jangbaguni}>장바구니</div>
+        <Router>
+        <Route exact path="/ListAppN">
+        <div className={classes.bar}>
+        <Link to="/Navi"><ArrowBackIosRoundedIcon className={classes.back}/></Link>
+        <Link to="/basket"><AddShoppingCartRoundedIcon className={classes.shopping}/></Link>
         </div>
-           <div className={classes.line}></div>
-       
-        <AppBar position="static" className={classes.root}>
+        <div className={classes.positioning}>
+          
+        {/* 사용자 프로필 부분 */}
+        <div className={classes.userbox}>
+          <div className={classes.userimg}/>
+          <div className={classes.userinfo}>
+            <div className={classes.username}>우아한</div>
+            <div className={classes.userid}>elegant00</div>
+      
+          </div>
+        </div>
+        
+        <AppBar position="static">
           <Toolbar>
             <div className={classes.search}>
               <div className={classes.searchIcon}>
@@ -278,9 +284,10 @@ class Basket extends Component {
             </div>
           </Toolbar>
       </AppBar>
+      </div>
       
           <Table className={classes.table}>
-          
+            
             <TableBody>
            
               {this.state.customers ?
@@ -294,50 +301,31 @@ class Basket extends Component {
               </TableRow>
               }
               {cellList.map(c => { 
-                  return  <Link to ="/"><Button className={classes.more} align="center" stateRefresh={this.stateRefresh}>{c}
+                  return  <Link to="/"><Button variant="contained" color="primary" className={classes.more} align="center" stateRefresh={this.stateRefresh}>{c}
                   </Button></Link>
                       })}
-
-            {/* 총 결제금액 부분 */}
-            <div className = {classes.cashbox}>
-
-                <div className={classes.cashminbox}>
-                    <div className={classes.cashfont}>총 결제 금액</div>
-                    <div className={classes.cashnumber}>57,200원</div>
-
-                </div>
-
-                <div className={classes.cashminbox}>
-                    <div className={classes.cashfont}>결제방법</div>
-                    <div className={classes.cashnumber}>신용/체크카드</div>
-
-                </div>
-
-            </div>
-
-            {cellList2.map(c => { 
-                  return  <Button variant="contained" color="secondary" className={classes.more2} align="center" stateRefresh={this.stateRefresh}>{c}
-                  </Button>
-                      })}
-            </TableBody>
-              
             
-           
+            </TableBody> 
             </Table>  
             </Route>
-            <Route exact path="/">
-                      <App/>
-            </Route>
-            <Route exact path="/Navi">
-              <Navi/>
-            </Route>
           
+          <Route exact path="/" >   
+          <App/>
+          </Route> 
 
+          <Route exact path="/Navi" >   
+          <Navi/>
+          </Route>           
+          
+          <Route exact path="/basket" >   
+          <Basket/>
+          </Route> 
+
+          </Router>
     </div>
-    </Router>
 
     );
   }
 }
 
-export default withStyles(styles)(Basket);
+export default withStyles(styles)(ListAppN);

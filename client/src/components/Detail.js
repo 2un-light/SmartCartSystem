@@ -61,7 +61,7 @@ const useStyles = makeStyles((theme) => ({
       height : '70px'
     },
     name : {
-      width : '250px',
+      width : '280px',
       height : '30px',
       fontSize : '23px',
       margin : '10px 20px 0px',
@@ -218,7 +218,7 @@ export default function Detail(props){
     />
       </div>
 
-      <Paper variant="outlined" className= {classes.paper}>  
+      <Paper variant="outlined" className= {classes.paper}> 
       <div className={classes.minbox}>
       <div className={classes.name}>{props.name}</div>
       <div className={classes.share}><ShareOutlinedIcon style={{ fontSize: 30 }}/></div>
@@ -237,7 +237,7 @@ export default function Detail(props){
       <div className={classes.soo}>남은수량 : {props.number} 개</div>
       </div>
       </Paper>
-      <Paper style ={{height : 60, textAlign : 'center', padding : 10}}> 
+      <Paper style ={{height : 60, textAlign : 'center', padding : 10, fontSize : 13}}> 
       상품 정보 <br/>
       <br/>
       더 매력적으로 돌아온 {props.name} ! 10% 적립행사

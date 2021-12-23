@@ -29,6 +29,7 @@ import Navi from './components/Navi';
 
 import List from './components/List';
 import ListApp from './ListApp';
+import ListAppN from './ListAppN';
 import LoginApp from './LoginApp';
 import Register from './components/Register';
 
@@ -280,8 +281,7 @@ class App extends Component {
   
 
 
-    const cellList1 = ["베스트 상품"]
-    const cellList2 = ["세일 상품"]
+    const cellList1 = ["상품 추천"]
     return( 
     
       <div className={classes.root}>
@@ -329,7 +329,7 @@ class App extends Component {
                  </TableHead>
                  <TableBody>
                  <div>
-                 <Link to ="/smartcart"> <MapRoundedIcon style={map} className={classes.icons}/></Link>
+                 <Link to ="/Navi"> <MapRoundedIcon style={map} className={classes.icons}/></Link>
               </div>
               {this.state.customers ?
                filteredComponents(this.state.customers) :
@@ -340,32 +340,15 @@ class App extends Component {
               </TableRow>
               }
             </TableBody>
-                 <TableHead>
-                 <TableRow>
-                {cellList2.map(c => {
-                  return <TableCell className={classes.tableHead}>{c}</TableCell>
-                })}
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {this.state.customers ?
-               filteredComponents(this.state.customers) :
-
-              <TableRow>
-                <TableCell colSpan="4" rowSpan="3" align="center">
-                  <CircularProgress className={classes.progress} variant="determinate" value={this.state.completed}/>
-                </TableCell>
-              </TableRow>
-              }
-            
-            </TableBody>
           </Table>            
       </Paper>
       
        
         </Route>
-        <Route exact path="/smartcart">
+        <Route exact path="/Navi">
           <Navi/>
+          
+
         </Route>
         <Route path ="/login">
               <LoginApp/>
@@ -373,6 +356,7 @@ class App extends Component {
 
         <Route path ="/register">
               <Register/>
+
         </Route>
 
 
@@ -386,8 +370,14 @@ class App extends Component {
         </Route>
 
         <Route exact path="/ListApp">
-          <ListApp/></Route>
-        </Router>
+          <ListApp/>
+          </Route>
+        
+        <Route exact path="/ListAppN">
+          <ListAppN/>
+          </Route>
+
+          </Router>
     </div>
   
 

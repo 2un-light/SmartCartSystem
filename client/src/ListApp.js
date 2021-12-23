@@ -19,6 +19,10 @@ import {
   Route,
   Link
 } from 'react-router-dom';
+import ArrowBackIosRoundedIcon from '@material-ui/icons/ArrowBackIosRounded';
+import AddShoppingCartRoundedIcon from '@material-ui/icons/AddShoppingCartRounded';
+
+
 
 const styles = theme => ({
   root : {
@@ -102,15 +106,21 @@ const styles = theme => ({
 
   },
 
+  bar : {
+    width : '100%',
+    height : '60px',
+
+  },
+
   userbox : {
     width : '100%',
-    height : '100px',
+    height : '90px',
   },
 
   userimg : {
     width : '65px',
     height : '65px',
-    margin : '30px 10px 10px',
+    margin : '20px 10px 10px',
     float : 'left',
     borderRadius : '50%',
     color : '#666666',
@@ -121,7 +131,7 @@ const styles = theme => ({
   userinfo : {
     width : '150px',
     height : '70px',
-    margin : '30px 10px 10px',
+    margin : '20px 10px 10px',
     float : 'left'
   },
   
@@ -150,7 +160,19 @@ const styles = theme => ({
   },
   width : {
     width : '70%'
-  }
+  },
+  back : {
+    width : '30px',
+    height : '30px',
+    float : 'left',
+    margin : '15px'
+},
+shopping : {
+  width : '30px',
+  height : '30px',
+  float : 'right',
+  margin : '15px'
+}
 
 
 });
@@ -212,6 +234,10 @@ class ListApp extends Component {
       return data.map((c) => {
         return <List stateRefresh={this.stateRefresh} key={c.barcode} id={c.barcode} image={c.image} p_name={c.p_name} price={c.price} count={c.count}/>
       });
+
+     
+
+     
     }
 
     const { classes } = this.props;
@@ -220,7 +246,12 @@ class ListApp extends Component {
       <div className={classes.root}>
         <Router>
         <Route exact path="/ListApp">
+        <div className={classes.bar}>
+        <Link to="/"><ArrowBackIosRoundedIcon className={classes.back}/></Link>
+        <Link to="/basket"><AddShoppingCartRoundedIcon className={classes.shopping}/></Link>
+        </div>
         <div className={classes.positioning}>
+          
         {/* 사용자 프로필 부분 */}
         <div className={classes.userbox}>
           <div className={classes.userimg}/>
@@ -277,6 +308,9 @@ class ListApp extends Component {
           
           <Route path="/" exact>   
           <App/>
+          </Route> 
+          <Route path="/basket" exact>   
+          <Basket/>
           </Route> 
           </Router>
     </div>
