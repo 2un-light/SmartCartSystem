@@ -1,4 +1,6 @@
 # SmartCartSystem
+![image](https://user-images.githubusercontent.com/82020828/222173341-b7e6ae45-736b-4955-b721-479c52783884.png)
+
 
 ## 간단한 설명 및 구동영상
 https://2un-light.tistory.com/40
