@@ -1,6 +1,6 @@
 # SmartCartSystem
 
-## 시연 동영상 및 설명
+## 간단한 설명 및 구동영상
 https://2un-light.tistory.com/40
 
 
@@ -8,6 +8,8 @@ https://2un-light.tistory.com/40
 - 프로젝트명 : 스마트 카트 시스템
 - 진행 인원 : 4인
 - 개발 기간 : 2021.03 ~ 2021. 06 (3개월)
+- 주요 기능 : 마트에 있는 상품 앱에서 확인, 쇼핑할 물품 리스트 담기, 사용자가 담은 물품과 비슷한 카테고리 상품 추천, 사용자가 쇼핑할 물품을 토대로 최적의 경로 추천,
+  상품 바코드를 스캔하면 해당 상품이 장바구니로 옮겨 감, 바코드 스캔이 완료된 상품끼리 가격 합산, 리스트나 장바구니에 담긴 물품 추가/삭제 가능
 
 
 ## 역할
@@ -27,6 +29,9 @@ https://2un-light.tistory.com/40
 - AWS
 - Heidi SQL, My SQL
 - Node JS
+
+## 하드웨어
+- 바코드 리더기
 
 ## 참고강의
 https://www.youtube.com/watch?v=_yEH9mczm3g&list=PLRx0vPvlEmdD1pSqKZiTihy5rplxecNpz
