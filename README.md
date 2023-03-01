@@ -1,4 +1,4 @@
-# SmartCartApp
+# SmartCar
 
 ## 시연 동영상 및 설명
 https://2un-light.tistory.com/40
