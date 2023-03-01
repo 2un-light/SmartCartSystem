@@ -31,7 +31,7 @@ https://2un-light.tistory.com/40
 - Node JS
 
 ## 하드웨어
-- 바코드 리더기
+- 바코드 스캐너
 
 ## 참고강의
 https://www.youtube.com/watch?v=_yEH9mczm3g&list=PLRx0vPvlEmdD1pSqKZiTihy5rplxecNpz
