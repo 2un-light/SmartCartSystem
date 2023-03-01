@@ -23,7 +23,7 @@ https://2un-light.tistory.com/40
 - JSON
 
 ## 환경 도구
- Visual Studio Code
+- Visual Studio Code (
 - AWS
 - Heidi SQL, My SQL
 - Node JS
